@@ -9,22 +9,22 @@ class Stag_Wedding_Rsvp extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_wedding_rsvp';
 		$this->widget_cssclass    = 'wedding-rsvp';
-		$this->widget_description = __( 'Display RSVP form.', 'stag' );
-		$this->widget_name        = __( 'Section: RSVP Form', 'stag' );
+		$this->widget_description = __( 'Display RSVP form.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: RSVP Form', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'Are you attending? RSVP here!', 'stag' ),
-				'label' => __( 'Title:', 'stag' ),
+				'std'   => __( 'Are you attending? RSVP here!', 'geeklove-assistant' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 			'subtitle' => array(
 				'type'  => 'text',
-				'std'   => __( 'Please select the options below and click the button in order to RSVP!', 'stag' ),
-				'label' => __( 'Sub Title:', 'stag' ),
+				'std'   => __( 'Please select the options below and click the button in order to RSVP!', 'geeklove-assistant' ),
+				'label' => __( 'Sub Title:', 'geeklove-assistant' ),
 			),
 			'guests' => array(
 				'type'  => 'number',
-				'label' => __( 'Max number of Guests:', 'stag' ),
+				'label' => __( 'Max number of Guests:', 'geeklove-assistant' ),
 				'std'   => '5',
 				'min'   => '1',
 				'max'   => '20',
@@ -32,18 +32,18 @@ class Stag_Wedding_Rsvp extends Stag_Widget {
 			),
 			'rsvp_label' => array(
 				'type'  => 'text',
-				'std'   => __( 'I Am Attending', 'stag' ),
-				'label' => __( 'RSVP Button Label:', 'stag' ),
+				'std'   => __( 'I Am Attending', 'geeklove-assistant' ),
+				'label' => __( 'RSVP Button Label:', 'geeklove-assistant' ),
 			),
 			'attending_message' => array(
 				'type'  => 'text',
-				'std'   => __( 'Thanks for attending, we will see you at our wedding.', 'stag' ),
-				'label' => __( 'Attending Message:', 'stag' ),
+				'std'   => __( 'Thanks for attending, we will see you at our wedding.', 'geeklove-assistant' ),
+				'label' => __( 'Attending Message:', 'geeklove-assistant' ),
 			),
 			'not_attending_message' => array(
 				'type'  => 'text',
-				'std'   => __( 'Sad to hear that you won’t make it to the wedding.  But thanks for letting us know!', 'stag' ),
-				'label' => __( 'Not Attending Message:', 'stag' ),
+				'std'   => __( 'Sad to hear that you won’t make it to the wedding.  But thanks for letting us know!', 'geeklove-assistant' ),
+				'label' => __( 'Not Attending Message:', 'geeklove-assistant' ),
 			),
 		);
 
@@ -87,12 +87,12 @@ class Stag_Wedding_Rsvp extends Stag_Widget {
 
 				<form class="grids" id="rsvp-form" method="post" action="<?php the_permalink(); ?>">
 					<div class="grid-4">
-						<label for="attendee_name"><?php _e('Your Name', 'stag'); ?></label>
+						<label for="attendee_name"><?php _e('Your Name', 'geeklove-assistant'); ?></label>
 						<input type="text" id="attendee_name" name="attendee_name" required>
 					</div>
 
 					<div class="grid-4">
-						<label for="attendee_count"><?php _e('Number of Guests', 'stag') ?></label>
+						<label for="attendee_count"><?php _e('Number of Guests', 'geeklove-assistant') ?></label>
 						<select id="attendee_count" name="attendee_number" class="custom-dropdown">
 							<?php
 							$max_guests = (int) ( ( isset( $guests ) && ! empty( $guests ) ) ? $guests : 5 );
@@ -109,25 +109,25 @@ class Stag_Wedding_Rsvp extends Stag_Widget {
 
 					<?php if ( ! empty( $all_events ) ) : ?>
 					<div class="grid-4">
-						<label for="attendee_event"><?php _e( 'You will attend&hellip;', 'stag' ) ?></label>
+						<label for="attendee_event"><?php _e( 'You will attend&hellip;', 'geeklove-assistant' ) ?></label>
 						<select id="attendee_event" name="attendee_event" class="custom-dropdown">
 
 							<?php if ( count($all_events) > 1 ) : ?>
-							<option value="all-events"><?php _e( 'All Events', 'stag' ); ?></option>
+							<option value="all-events"><?php _e( 'All Events', 'geeklove-assistant' ); ?></option>
 							<?php endif; ?>
 
 							<?php foreach ( $all_events as $title ) : ?>
 							<option value="<?php echo esc_attr( stag_to_slug( $title ) ); ?>"><?php echo esc_html($title); ?></option>
 							<?php endforeach; ?>
 
-							<option value="no-events"><?php _e( 'Not attending', 'stag' ); ?></option>
+							<option value="no-events"><?php _e( 'Not attending', 'geeklove-assistant' ); ?></option>
 
 						</select>
 					</div>
 					<?php endif; ?>
 
 					<div class="submit grid-12">
-						<?php $label = ( isset( $rsvp_label ) && !empty($rsvp_label) ) ? $rsvp_label : __( 'I Am Attending', 'stag' ); ?>
+						<?php $label = ( isset( $rsvp_label ) && !empty($rsvp_label) ) ? $rsvp_label : __( 'I Am Attending', 'geeklove-assistant' ); ?>
 						<input type="submit" id="submit_rsvp" value="<?php echo esc_attr( $label ); ?>" name="submit_rsvp"
 								data-attending="<?php echo esc_attr( $attending ); ?>"
 								data-not-attending="<?php echo esc_attr( $not_attending ); ?>" />
@@ -154,4 +154,16 @@ class Stag_Wedding_Rsvp extends Stag_Widget {
 
 		$this->cache_widget( $args, $content );
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Wedding_Rsvp', 'register' ) );
+

@@ -9,38 +9,38 @@ class Stag_Wedding_Tweets extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_wedding_tweets';
 		$this->widget_cssclass    = 'wedding-couple-tweets';
-		$this->widget_description = __( 'Display back to back tweets from bridegroom and bride.', 'stag' );
-		$this->widget_name        = __( 'Section: Wedding Couple Tweets', 'stag' );
+		$this->widget_description = __( 'Display back to back tweets from bridegroom and bride.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Wedding Couple Tweets', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title'       => array(
 				'type'  => 'text',
-				'std'   => __( 'Tweets Back to Back', 'stag' ),
-				'label' => __( 'Title:', 'stag' ),
+				'std'   => __( 'Tweets Back to Back', 'geeklove-assistant' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 			'subtitle'    => array(
 				'type'  => 'text',
 				'std'   => null,
-				'label' => __( 'Sub Title:', 'stag' ),
+				'label' => __( 'Sub Title:', 'geeklove-assistant' ),
 			),
 			'widget_desc' => array(
 				'type' => 'description',
-				'std'  => sprintf( __( 'This widget will use avatar and first name of bride and bridegroom set under Theme Options > <a href="%s" target="_blank">Wedding Settings</a>.', 'stag' ), admin_url( 'admin.php?page=stagframework#wedding-settings' ) ),
+				'std'  => sprintf( __( 'This widget will use avatar and first name of bride and bridegroom set under Theme Options > <a href="%s" target="_blank">Wedding Settings</a>.', 'geeklove-assistant' ), admin_url( 'admin.php?page=stagframework#wedding-settings' ) ),
 			),
 			'brg_twitter' => array(
 				'type'  => 'text',
 				'std'   => null,
-				'label' => __( 'Bridegroom Twitter Username:', 'stag' ),
+				'label' => __( 'Bridegroom Twitter Username:', 'geeklove-assistant' ),
 			),
 			'br_twitter'  => array(
 				'type'  => 'text',
 				'std'   => null,
-				'label' => __( 'Bride Twitter Username:', 'stag' ),
+				'label' => __( 'Bride Twitter Username:', 'geeklove-assistant' ),
 			),
 			'cache_time'  => array(
 				'type'  => 'number',
 				'std'   => '2',
 				'min'   => '1',
-				'label' => __( 'Cache tweets in every following hours:', 'stag' ),
+				'label' => __( 'Cache tweets in every following hours:', 'geeklove-assistant' ),
 			),
 			'postcount'   => array(
 				'type'  => 'number',
@@ -48,11 +48,11 @@ class Stag_Wedding_Tweets extends Stag_Widget {
 				'min'   => '1',
 				'max'   => '10',
 				'step'  => '1',
-				'label' => __( 'Number of tweets (max 10):', 'stag' ),
+				'label' => __( 'Number of tweets (max 10):', 'geeklove-assistant' ),
 			),
 			'desc'        => array(
 				'type' => 'description',
-				'std'  => sprintf( __( 'Details like Consumer key and secret can be set under <a href="%s" target="_blank">StagTools Settings</a>', 'stag' ), admin_url( 'options-general.php?page=stagtools' ) ),
+				'std'  => sprintf( __( 'Details like Consumer key and secret can be set under <a href="%s" target="_blank">StagTools Settings</a>', 'geeklove-assistant' ), admin_url( 'options-general.php?page=stagtools' ) ),
 			),
 		);
 
@@ -105,7 +105,7 @@ class Stag_Wedding_Tweets extends Stag_Widget {
 					$stag_options = get_option( 'stag_options' );
 
 					if ( empty( $stag_options['consumer_key'] ) || empty( $stag_options['consumer_secret'] ) || empty( $stag_options['access_key'] ) || empty( $stag_options['access_secret'] ) ) {
-						echo '<strong>' . __( 'Please fill all widget settings.', 'stag' ) . '</strong>' . $after_widget;
+						echo '<strong>' . __( 'Please fill all widget settings.', 'geeklove-assistant' ) . '</strong>' . $after_widget;
 						return;
 					}
 
@@ -118,8 +118,8 @@ class Stag_Wedding_Tweets extends Stag_Widget {
 					if ( $diff >= $crt || empty( $last_cache ) ) {
 						$connection = $tw_helper->getConnectionWithAccessToken( $stag_options['consumer_key'], $stag_options['consumer_secret'], $stag_options['access_key'], $stag_options['access_secret'] );
 
-						$brg_tweets = $connection->get( 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $instance['brg_twitter'] . '&count=' . $instance['postcount'] ) or die( __( "Couldn't retrieve tweets! Wrong username!", 'stag' ) );
-						$br_tweets  = $connection->get( 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $instance['br_twitter'] . '&count=' . $instance['postcount'] ) or die( __( "Couldn't retrieve tweets! Wrong username!", 'stag' ) );
+						$brg_tweets = $connection->get( 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $instance['brg_twitter'] . '&count=' . $instance['postcount'] ) or die( __( "Couldn't retrieve tweets! Wrong username!", 'geeklove-assistant' ) );
+						$br_tweets  = $connection->get( 'https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=' . $instance['br_twitter'] . '&count=' . $instance['postcount'] ) or die( __( "Couldn't retrieve tweets! Wrong username!", 'geeklove-assistant' ) );
 
 						if ( ! empty( $brg_tweets->errors ) && ! empty( $br_tweets->errors ) ) {
 							if ( $brg_tweets->errors[0]->message == 'Invalid or expired token' ) {
@@ -232,6 +232,17 @@ class Stag_Wedding_Tweets extends Stag_Widget {
 
 		$this->cache_widget( $args, $content );
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Wedding_Tweets', 'register' ) );
 
 require_once 'twitteroauth.php';

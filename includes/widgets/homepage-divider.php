@@ -9,12 +9,12 @@ class Stag_Wedding_Divider extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_wedding_divider';
 		$this->widget_cssclass    = 'wedding-divider';
-		$this->widget_description = __( 'Separate homepage sections with this horizontal divider.', 'stag' );
-		$this->widget_name        = __( 'Section: Section Divider', 'stag' );
+		$this->widget_description = __( 'Separate homepage sections with this horizontal divider.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Section Divider', 'geeklove-assistant' );
 		$this->settings           = array(
 			'desc' => array(
 				'type'  => 'description',
-				'std'   => __( 'Yay! No options to set!', 'stag' )
+				'std'   => __( 'Yay! No options to set!', 'geeklove-assistant' )
 			)
 		);
 
@@ -55,4 +55,15 @@ class Stag_Wedding_Divider extends Stag_Widget {
 		$this->cache_widget( $args, $content );
 
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Wedding_Divider', 'register' ) );

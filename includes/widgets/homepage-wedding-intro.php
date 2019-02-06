@@ -9,13 +9,13 @@ class Stag_Wedding_Intro extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_wedding_intro';
 		$this->widget_cssclass    = 'wedding-intro';
-		$this->widget_description = __( 'Display wedding intro on homepage.', 'stag' );
-		$this->widget_name        = __( 'Section: Wedding Intro', 'stag' );
+		$this->widget_description = __( 'Display wedding intro on homepage.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Wedding Intro', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'Are Getting Married!', 'stag' ),
-				'label' => __( 'Title:', 'stag' ),
+				'std'   => __( 'Are Getting Married!', 'geeklove-assistant' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 		);
 
@@ -153,4 +153,15 @@ class Stag_Wedding_Intro extends Stag_Widget {
 
 		$this->cache_widget( $args, $content );
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Wedding_Intro', 'register' ) );

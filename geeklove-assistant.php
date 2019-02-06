@@ -122,11 +122,11 @@ function geeklove_assistant_activation_notice() {
  */
 function geeklove_assistant_activation_check() {
 	$theme = wp_get_theme(); // gets the current theme
-	if ( 'Geeklove' == $theme->name || 'Geeklove' == $theme->parent_theme ) {
+	if ( 'GeekLove' == $theme->name || 'GeekLove' == $theme->parent_theme ) {
 		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
 			add_action( 'after_setup_theme', 'geeklove_assistant' );
 		} else {
-			ink_assistant();
+			geeklove_assistant();
 		}
 	} else {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
@@ -134,5 +134,5 @@ function geeklove_assistant_activation_check() {
 	}
 }
 
-// Theme loads.
+// Plugin loads.
 geeklove_assistant_activation_check();

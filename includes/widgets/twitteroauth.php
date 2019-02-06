@@ -1164,46 +1164,46 @@ class StagTWHelper {
 
 			// if less then 3 seconds
 			if ( $d < 3 ) {
-				return __( 'right now', 'stag' );
+				return __( 'right now', 'geeklove-assistant' );
 			}
 
 			// if less then minute
 			if ( $d < $minute ) {
-				return floor( $d ) . __( ' seconds ago', 'stag' );
+				return floor( $d ) . __( ' seconds ago', 'geeklove-assistant' );
 			}
 
 			// if less then 2 minutes
 			if ( $d < $minute * 2 ) {
-				return __( 'About 1 minute ago', 'stag' );
+				return __( 'About 1 minute ago', 'geeklove-assistant' );
 			}
 
 			// if less then hour
 			if ( $d < $hour ) {
-				return floor( $d / $minute ) . __( ' minutes ago', 'stag' );
+				return floor( $d / $minute ) . __( ' minutes ago', 'geeklove-assistant' );
 			}
 
 			// if less then 2 hours
 			if ( $d < $hour * 2 ) {
-				return __( 'about 1 hour ago', 'stag' );
+				return __( 'about 1 hour ago', 'geeklove-assistant' );
 			}
 
 			// if less then day
 			if ( $d < $day ) {
-				return floor( $d / $hour ) . __( ' hours ago', 'stag' );
+				return floor( $d / $hour ) . __( ' hours ago', 'geeklove-assistant' );
 			}
 
 			// if more then day, but less then 2 days
 			if ( $d > $day && $d < $day * 2 ) {
-				return __( 'Yesterday', 'stag' );
+				return __( 'Yesterday', 'geeklove-assistant' );
 			}
 
 			// if less then year
 			if ( $d < $day * 365 ) {
-				return floor( $d / $day ) . __( ' days ago', 'stag' );
+				return floor( $d / $day ) . __( ' days ago', 'geeklove-assistant' );
 			}
 
 			// else return more than a year
-			return __( 'over a year ago', 'stag' );
+			return __( 'over a year ago', 'geeklove-assistant' );
 		}
 	}
 

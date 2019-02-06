@@ -1,13 +1,9 @@
 <?php
-add_action('widgets_init', function() {
-  return register_widget( 'stag_wedding_gallery' );
-});
-
 class stag_wedding_gallery extends WP_Widget{
   function __construct(){
-    $widget_ops = array('classname' => 'wedding-gallery', 'description' => __('Display Gallery pics from a specific category.', 'stag'));
+    $widget_ops = array('classname' => 'wedding-gallery', 'description' => __('Display Gallery pics from a specific category.', 'geeklove-assistant'));
     $control_ops = array('width' => 300, 'height' => 350, 'id_base' => 'stag_wedding_gallery');
-    parent::__construct('stag_wedding_gallery', __('Section: Wedding Gallery', 'stag'), $widget_ops, $control_ops);
+    parent::__construct('stag_wedding_gallery', __('Section: Wedding Gallery', 'geeklove-assistant'), $widget_ops, $control_ops);
   }
 
   function widget($args, $instance){
@@ -90,7 +86,7 @@ class stag_wedding_gallery extends WP_Widget{
             <?php
 
             if($page != -1){
-              echo '<div class=center><a href="'.get_page_link($page).'" class="button">'. __( 'Go to Galleries', 'stag' ) .'</a></div>';
+              echo '<div class=center><a href="'.get_page_link($page).'" class="button">'. __( 'Go to Galleries', 'geeklove-assistant' ) .'</a></div>';
             }
 
             ?>
@@ -120,7 +116,7 @@ class stag_wedding_gallery extends WP_Widget{
 
   function form($instance){
     $defaults = array(
-		'title'    => __('Featured Photographs', 'stag'),
+		'title'    => __('Featured Photographs', 'geeklove-assistant'),
 		'subtitle' => '',
 		'cat'      => '',
 		'page'     => '-1',
@@ -132,17 +128,17 @@ class stag_wedding_gallery extends WP_Widget{
     ?>
 
     <p>
-      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'stag'); ?></label>
+      <label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'geeklove-assistant'); ?></label>
       <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" value="<?php echo $instance['title']; ?>" />
     </p>
 
     <p>
-      <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'stag'); ?></label>
+      <label for="<?php echo $this->get_field_id('subtitle'); ?>"><?php _e('Sub Title:', 'geeklove-assistant'); ?></label>
       <input type="text" class="widefat" id="<?php echo $this->get_field_id( 'subtitle' ); ?>" name="<?php echo $this->get_field_name( 'subtitle' ); ?>" value="<?php echo $instance['subtitle']; ?>" />
     </p>
 
     <p>
-      <label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Category:', 'stag'); ?></label>
+      <label for="<?php echo $this->get_field_id('cat'); ?>"><?php _e('Category:', 'geeklove-assistant'); ?></label>
       <select class="widefat" id="<?php echo $this->get_field_id( 'cat' ); ?>" name="<?php echo $this->get_field_name( 'cat' ); ?>">
       <?php
       $c = get_categories('taxonomy=photo-type&type=gallery&hide_empty=1');
@@ -153,14 +149,14 @@ class stag_wedding_gallery extends WP_Widget{
       }
       ?>
       </select>
-      <span class="description"><?php _e('Choose category from which to display photos', 'stag'); ?></span>
+      <span class="description"><?php _e('Choose category from which to display photos', 'geeklove-assistant'); ?></span>
     </p>
 
     <p>
-      <label for="<?php echo $this->get_field_id('page'); ?>"><?php _e('Linked Page:', 'stag'); ?></label>
+      <label for="<?php echo $this->get_field_id('page'); ?>"><?php _e('Linked Page:', 'geeklove-assistant'); ?></label>
 
       <select id="<?php echo $this->get_field_id( 'page' ); ?>" name="<?php echo $this->get_field_name( 'page' ); ?>" class="widefat">
-        <option value="-1"><?php _e( '-Select Page-', 'stag' ); ?></option>
+        <option value="-1"><?php _e( '-Select Page-', 'geeklove-assistant' ); ?></option>
       <?php
 
         $args = array(
@@ -175,10 +171,21 @@ class stag_wedding_gallery extends WP_Widget{
 
        ?>
      </select>
-     <span class="description"><?php _e( 'This page will be display a link to the photo gallery.', 'stag' ); ?></span>
+     <span class="description"><?php _e( 'This page will be display a link to the photo gallery.', 'geeklove-assistant' ); ?></span>
     </p>
 
     <?php
-  }
+	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	function register() {
+		register_widget( __CLASS__ );
+	}
 }
-?>
+
+
+add_action( 'widgets_init', array( 'stag_wedding_gallery', 'register' ) );

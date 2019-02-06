@@ -9,24 +9,24 @@ class Stag_Recent_Post extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_recent_post';
 		$this->widget_cssclass    = 'stag-recent-post';
-		$this->widget_description = __( 'Display a recent post from blog.', 'stag' );
-		$this->widget_name        = __( 'Section: Blog', 'stag' );
+		$this->widget_description = __( 'Display a recent post from blog.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Blog', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'From the Blog', 'stag' ),
-				'label' => __( 'Title:', 'stag' ),
+				'std'   => __( 'From the Blog', 'geeklove-assistant' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 			'subtitle' => array(
 				'type'  => 'text',
-				'std'   => __( 'Present ideas, Stories, and latest updates for the Wedding.', 'stag' ),
-				'label' => __( 'Sub Title:', 'stag' ),
+				'std'   => __( 'Present ideas, Stories, and latest updates for the Wedding.', 'geeklove-assistant' ),
+				'label' => __( 'Sub Title:', 'geeklove-assistant' ),
 			),
 			'count' => array(
 				'type'  => 'number',
 				'std'   => '1',
 				'min'   => '1',
-				'label' => __( 'Post Count:', 'stag' ),
+				'label' => __( 'Post Count:', 'geeklove-assistant' ),
 			),
 		);
 
@@ -81,13 +81,13 @@ class Stag_Recent_Post extends Stag_Widget {
 						<?php endif; ?>
 
 						<div class="entry-meta entry-header grids">
-							<span class="grid-3 author"><i class="icon icon-author"></i><span><?php _e( 'Posted By', 'stag' ) ?> </span><?php the_author_posts_link(); ?></span>
-							<span class="grid-3 category"><i class="icon icon-categories"></i><span><?php _e( 'In Category', 'stag' ) ?> </span><?php the_category(', '); ?></span>
+							<span class="grid-3 author"><i class="icon icon-author"></i><span><?php _e( 'Posted By', 'geeklove-assistant' ) ?> </span><?php the_author_posts_link(); ?></span>
+							<span class="grid-3 category"><i class="icon icon-categories"></i><span><?php _e( 'In Category', 'geeklove-assistant' ) ?> </span><?php the_category(', '); ?></span>
 							<span class="grid-3 date"><i class="icon icon-date"></i><span><?php the_time('M d Y'); ?></span></span>
-							<span class="grid-3 comments"><i class="icon icon-comments"></i><span><?php printf( _nx( '1 Comment', '%1$s Comments', get_comments_number(), 'comments title', 'stag' ), number_format_i18n( get_comments_number() ) ); ?></span></span>
+							<span class="grid-3 comments"><i class="icon icon-comments"></i><span><?php printf( _nx( '1 Comment', '%1$s Comments', get_comments_number(), 'comments title', 'geeklove-assistant' ), number_format_i18n( get_comments_number() ) ); ?></span></span>
 						</div>
 
-						<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf(__('Permanent Link to %s', 'stag'), get_the_title()); ?>"><?php the_title(); ?></a></h2>
+						<h2 class="entry-title"><a href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf(__('Permanent Link to %s', 'geeklove-assistant'), get_the_title()); ?>"><?php the_title(); ?></a></h2>
 
 						<div class="entry-content">
 							<?php the_excerpt(); ?>
@@ -98,7 +98,7 @@ class Stag_Recent_Post extends Stag_Widget {
 				</div><!-- .all-posts -->
 
 				<div class="center">
-					<a href="<?php echo ( get_option( 'show_on_front' ) == 'page' ) ? get_permalink( get_option('page_for_posts' ) ) : home_url(); ?>" class="button accent-background"><?php _e( 'Go to Blog', 'stag' ); ?></a>
+					<a href="<?php echo ( get_option( 'show_on_front' ) == 'page' ) ? get_permalink( get_option('page_for_posts' ) ) : home_url(); ?>" class="button accent-background"><?php _e( 'Go to Blog', 'geeklove-assistant' ); ?></a>
 				</div>
 
 				<?php endif; ?>
@@ -119,4 +119,15 @@ class Stag_Recent_Post extends Stag_Widget {
 		$this->cache_widget( $args, $content );
 
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Recent_Post', 'register' ) );

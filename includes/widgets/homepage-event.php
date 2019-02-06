@@ -9,19 +9,19 @@ class Stag_Wedding_Event extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_wedding_event';
 		$this->widget_cssclass    = 'wedding-event';
-		$this->widget_description = __( 'Display wedding event details on homepage.', 'stag' );
-		$this->widget_name        = __( 'Section: Wedding Event', 'stag' );
+		$this->widget_description = __( 'Display wedding event details on homepage.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Wedding Event', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title' => array(
 				'type'  => 'text',
-				'std'   => __( 'The Wedding Event', 'stag' ),
-				'label' => __( 'Title:', 'stag' ),
+				'std'   => __( 'The Wedding Event', 'geeklove-assistant' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 			'welcomeText' => array(
 				'type'  => 'textarea',
 				'rows'  => '4',
 				'std'   => null,
-				'label' => __( 'Welcome Text:', 'stag' ),
+				'label' => __( 'Welcome Text:', 'geeklove-assistant' ),
 			),
 		);
 
@@ -95,7 +95,7 @@ class Stag_Wedding_Event extends Stag_Widget {
 							</div>
 						</div>
 
-						<a class="button" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf( __('Permanent Link to %s', 'stag'), get_the_title() ); ?>"><?php _e( 'Learn More', 'stag' ); ?></a>
+						<a class="button" href="<?php the_permalink(); ?>" rel="bookmark" title="<?php printf( __('Permanent Link to %s', 'geeklove-assistant'), get_the_title() ); ?>"><?php _e( 'Learn More', 'geeklove-assistant' ); ?></a>
 					</div>
 
 					<?php
@@ -123,4 +123,15 @@ class Stag_Wedding_Event extends Stag_Widget {
 
 		$this->cache_widget( $args, $content );
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Wedding_Event', 'register' ) );

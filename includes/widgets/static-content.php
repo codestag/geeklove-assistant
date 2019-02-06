@@ -13,23 +13,23 @@ class Stag_Widget_Static_Content extends Stag_Widget {
 	public function __construct() {
 		$this->widget_id          = 'stag_widget_static_content';
 		$this->widget_cssclass    = 'stag_widget_static_content';
-		$this->widget_description = __( 'Displays content from a specific page.', 'stag' );
-		$this->widget_name        = __( 'Section: Static Content', 'stag' );
+		$this->widget_description = __( 'Displays content from a specific page.', 'geeklove-assistant' );
+		$this->widget_name        = __( 'Section: Static Content', 'geeklove-assistant' );
 		$this->settings           = array(
 			'title'      => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Title:', 'stag' ),
+				'label' => __( 'Title:', 'geeklove-assistant' ),
 			),
 			'page'       => array(
 				'type'  => 'page',
 				'std'   => '',
-				'label' => __( 'Select Page:', 'stag' ),
+				'label' => __( 'Select Page:', 'geeklove-assistant' ),
 			),
 			'bg_color'   => array(
 				'type'  => 'colorpicker',
 				'std'   => geeklove_get_thememod_value( 'accent-color' ),
-				'label' => __( 'Background Color:', 'stag' ),
+				'label' => __( 'Background Color:', 'geeklove-assistant' ),
 			),
 			'bg_opacity' => array(
 				'type'  => 'number',
@@ -37,22 +37,22 @@ class Stag_Widget_Static_Content extends Stag_Widget {
 				'step'  => '5',
 				'min'   => '0',
 				'max'   => '100',
-				'label' => __( 'Background Opacity:', 'stag' ),
+				'label' => __( 'Background Opacity:', 'geeklove-assistant' ),
 			),
 			'bg_image'   => array(
 				'type'  => 'text',
 				'std'   => '',
-				'label' => __( 'Background Image URL:', 'stag' ),
+				'label' => __( 'Background Image URL:', 'geeklove-assistant' ),
 			),
 			'text_color' => array(
 				'type'  => 'colorpicker',
 				'std'   => '#ffffff',
-				'label' => __( 'Text Color:', 'stag' ),
+				'label' => __( 'Text Color:', 'geeklove-assistant' ),
 			),
 			'link_color' => array(
 				'type'  => 'colorpicker',
 				'std'   => '#f8f8f8',
-				'label' => __( 'Link Color:', 'stag' ),
+				'label' => __( 'Link Color:', 'geeklove-assistant' ),
 			),
 		);
 
@@ -89,7 +89,7 @@ class Stag_Widget_Static_Content extends Stag_Widget {
 		echo $before_widget;
 
 		// Allow site-wide customization of the 'Read more' link text
-		$read_more = apply_filters( 'stag_read_more_text', __( 'Read more', 'stag' ) );
+		$read_more = apply_filters( 'stag_read_more_text', __( 'Read more', 'geeklove-assistant' ) );
 		?>
 		<section class="inner-section">
 
@@ -127,4 +127,15 @@ class Stag_Widget_Static_Content extends Stag_Widget {
 
 		$this->cache_widget( $args, $content );
 	}
+
+	/**
+	 * Registers the widget with the WordPress Widget API.
+	 *
+	 * @return void.
+	 */
+	public static function register() {
+		register_widget( __CLASS__ );
+	}
 }
+
+add_action( 'widgets_init', array( 'Stag_Widget_Static_Content', 'register' ) );

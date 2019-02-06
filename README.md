@@ -1,5 +1,5 @@
 # Geeklove Assistant
-A plugin to assit Geeklove theme in adding widgets.
+A plugin to assist Geeklove theme in adding widgets.
 
 ### To use this follow the below steps
  1. Make sure you have [Geeklove Theme](https://codestag.com/themes/geeklove) installed and then clone or download this repo.
