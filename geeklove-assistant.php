@@ -44,8 +44,18 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Geeklove_Assistant ) ) {
 				self::$instance = new Geeklove_Assistant();
 				self::$instance->define_constants();
+				self::$instance->init();
 				self::$instance->includes();
 			}
+		}
+
+		/**
+		 * Initialize plugin hooks.
+		 *
+		 * @since 1.0
+		 */
+		public function init() {
+			add_action( 'admin_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
 		}
 
 		/**
@@ -79,6 +89,31 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function includes() {
+			/**
+			 * Include Meta Boxes.
+			 */
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/stag-admin-metaboxes.php';
+			if ( false === geeklove_get_thememod_value( 'geeklove_disable_seo_settings' ) ) {
+				include_once GA_PLUGIN_PATH . 'includes/metaboxes/seo.php';
+			}
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/event-metabox.php';
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/contact-metabox.php';
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/gallery-metabox.php';
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/page-metabox.php';
+			require_once GA_PLUGIN_PATH . 'includes/metaboxes/rsvp-metabox.php';
+
+			/**
+			 * Include Custom Post Types.
+			 */
+			require_once GA_PLUGIN_PATH . 'includes/cpt/events.php';
+			require_once GA_PLUGIN_PATH . 'includes/cpt/gallery.php';
+			require_once GA_PLUGIN_PATH . 'includes/cpt/guestbook.php';
+			require_once GA_PLUGIN_PATH . 'includes/cpt/rsvp.php';
+
+			/**
+			 * Include Widgets.
+			 */
+			require_once GA_PLUGIN_PATH . 'includes/widgets/class-stag-widget.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-blog.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-countdown.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-divider.php';
@@ -88,6 +123,28 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-tweets.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-wedding-intro.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/static-content.php';
+		}
+
+		/**
+		 * Enqueue scripts and styles.
+		 *
+		 * @since  1.0.0
+		 *
+		 * @param  string $hook Page name where to enqueue the admin styles.
+		 * @return void
+		 */
+		public function scripts_and_styles( $hook ) {
+			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
+				// Scripts
+				wp_enqueue_media();
+				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL  . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
+				wp_enqueue_script( 'stag-admin-metabox' );
+
+				// Styles
+				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL  . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), GA_VERSION );
+				wp_enqueue_style( 'stag-admin-metabox' );
+				wp_enqueue_style( 'wp-color-picker' );
+			}
 		}
 	}
 endif;
