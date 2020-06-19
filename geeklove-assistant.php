@@ -102,6 +102,10 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			require_once GA_PLUGIN_PATH . 'includes/metaboxes/page-metabox.php';
 			require_once GA_PLUGIN_PATH . 'includes/metaboxes/rsvp-metabox.php';
 
+
+			// Shortcodes.
+			require_once IA_PLUGIN_PATH . 'includes/shortcodes/contact-form.php';
+
 			/**
 			 * Include Custom Post Types.
 			 */
