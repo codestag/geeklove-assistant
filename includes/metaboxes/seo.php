@@ -5,44 +5,44 @@ add_action('add_meta_boxes', 'stag_metabox_seo');
 function stag_metabox_seo(){
 	$meta_box = array(
 		'id' => 'stag_metabox_seo',
-		'title' => __('SEO Settings', 'geeklove'),
-		'description' => __('Customize the SEO settings of your posts/pages', 'geeklove'),
+		'title' => __('SEO Settings', 'geeklove-assistant'),
+		'description' => __('Customize the SEO settings of your posts/pages', 'geeklove-assistant'),
 		'page' => 'post',
 		'context' => 'normal',
 		'priority' => 'high',
 		'fields' => array(
 			array(
-				'name' => __('Title', 'geeklove'),
-				'desc' => __('Enter the post title, most search engines use a maximum of 60 characters.', 'geeklove'),
+				'name' => __('Title', 'geeklove-assistant'),
+				'desc' => __('Enter the post title, most search engines use a maximum of 60 characters.', 'geeklove-assistant'),
 				'id'   => '_stag_seo_title',
 				'type' => 'text',
 				'std'  => ''
 			),
 			array(
-				'name' => __('Description', 'geeklove'),
-				'desc' => __('Enter the post SEO description, most search engines use a maximum of 160 characters.', 'geeklove'),
+				'name' => __('Description', 'geeklove-assistant'),
+				'desc' => __('Enter the post SEO description, most search engines use a maximum of 160 characters.', 'geeklove-assistant'),
 				'id'   => '_stag_seo_description',
 				'type' => 'text',
 				'std'  => ''
 			),
 			array(
-				'name' => __('Keywords', 'geeklove'),
-				'desc' => __('A comma separated list of keywords', 'geeklove'),
+				'name' => __('Keywords', 'geeklove-assistant'),
+				'desc' => __('A comma separated list of keywords', 'geeklove-assistant'),
 				'id'   => '_stag_seo_keywords',
 				'type' => 'text',
 				'std'  => ''
 			),
 			array(
-				'name'    => __('Meta Robots Index', 'geeklove'),
-				'desc'    => __('Do you want robots to index this page?', 'geeklove'),
+				'name'    => __('Meta Robots Index', 'geeklove-assistant'),
+				'desc'    => __('Do you want robots to index this page?', 'geeklove-assistant'),
 				'id'      => '_stag_seo_robots_index',
 				'type'    => 'radio',
 				'std'     => 'index',
 				'options' => array('index', 'noindex')
 			),
 			array(
-				'name'    => __('Meta Robots Follow', 'geeklove'),
-				'desc'    => __('Do you want robots to follow links from this page?', 'geeklove'),
+				'name'    => __('Meta Robots Follow', 'geeklove-assistant'),
+				'desc'    => __('Do you want robots to follow links from this page?', 'geeklove-assistant'),
 				'id'      => '_stag_seo_robots_follow',
 				'type'    => 'radio',
 				'std'     => 'follow',

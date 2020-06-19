@@ -4,29 +4,29 @@ add_action('add_meta_boxes', 'stag_metabox_contact');
 function stag_metabox_contact(){
   $meta_box = array(
     'id' => 'stag_metabox_contact',
-    'title' => __('Contact Prefrences', 'geeklove'),
-    'description' => __('Edit your contact preferences', 'geeklove'),
+    'title' => __('Contact Prefrences', 'geeklove-assistant'),
+    'description' => __('Edit your contact preferences', 'geeklove-assistant'),
     'page' => 'page',
     'context' => 'normal',
     'priority' => 'high',
     'fields' => array(
         array(
-            'name' => __('Secondary Title', 'geeklove'),
-            'desc' => __('Enter the secondary title, used for second section on contact page.', 'geeklove'),
+            'name' => __('Secondary Title', 'geeklove-assistant'),
+            'desc' => __('Enter the secondary title, used for second section on contact page.', 'geeklove-assistant'),
             'id' => '_stag_contact_secondary_title',
             'type' => 'text',
             'std' => ''
         ),
         array(
-            'name' => __('Contact Number', 'geeklove'),
-            'desc' => __('Enter your contact number.', 'geeklove'),
+            'name' => __('Contact Number', 'geeklove-assistant'),
+            'desc' => __('Enter your contact number.', 'geeklove-assistant'),
             'id' => '_stag_contact_number',
             'type' => 'text',
             'std' => ''
         ),
         array(
-            'name' => __('Email Address', 'geeklove'),
-            'desc' => __('Enter your email address.', 'geeklove'),
+            'name' => __('Email Address', 'geeklove-assistant'),
+            'desc' => __('Enter your email address.', 'geeklove-assistant'),
             'id' => '_stag_contact_email',
             'type' => 'text',
             'std' => ''

@@ -6,16 +6,16 @@
  */
 function stag_create_post_type_guestbook(){
 	$labels = array(
-		'name'               => __( 'Guestbook', 'geeklove'),
-		'singular_name'      => __( 'Guestbook' , 'geeklove'),
-		'add_new'            => __('Add New', 'geeklove'),
-		'add_new_item'       => __('Add New Guestbook', 'geeklove'),
-		'edit_item'          => __('Edit Guestbook', 'geeklove'),
-		'new_item'           => __('New Guestbook', 'geeklove'),
-		'view_item'          => __('View Guestbook', 'geeklove'),
-		'search_items'       => __('Search Guestbook', 'geeklove'),
-		'not_found'          => __('No Guestbooks found', 'geeklove'),
-		'not_found_in_trash' => __('No Guestbooks found in Trash', 'geeklove'),
+		'name'               => __( 'Guestbook', 'geeklove-assistant'),
+		'singular_name'      => __( 'Guestbook' , 'geeklove-assistant'),
+		'add_new'            => __('Add New', 'geeklove-assistant'),
+		'add_new_item'       => __('Add New Guestbook', 'geeklove-assistant'),
+		'edit_item'          => __('Edit Guestbook', 'geeklove-assistant'),
+		'new_item'           => __('New Guestbook', 'geeklove-assistant'),
+		'view_item'          => __('View Guestbook', 'geeklove-assistant'),
+		'search_items'       => __('Search Guestbook', 'geeklove-assistant'),
+		'not_found'          => __('No Guestbooks found', 'geeklove-assistant'),
+		'not_found_in_trash' => __('No Guestbooks found in Trash', 'geeklove-assistant'),
 		'parent_item_colon'  => ''
 	);
 
@@ -44,9 +44,9 @@ add_action('init', 'stag_create_post_type_guestbook');
 function stag_guestbook_edit_columns( $columns ) {
 	$columns = array(
 		"cb"      => "<input type=\"checkbox\" />",
-		"title"   => __( 'Name', 'geeklove' ),
-		"message" => __( 'Message', 'geeklove' ),
-		"date"    => __( 'Date Added', 'geeklove' )
+		"title"   => __( 'Name', 'geeklove-assistant' ),
+		"message" => __( 'Message', 'geeklove-assistant' ),
+		"date"    => __( 'Date Added', 'geeklove-assistant' )
 	);
 
 	return $columns;

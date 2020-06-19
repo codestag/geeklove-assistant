@@ -6,16 +6,16 @@
  */
 function create_post_type_gallery(){
     $labels = array(
-        'name'               => __( 'Gallery', 'geeklove'),
-        'singular_name'      => __( 'Gallery' , 'geeklove'),
-        'add_new'            => __('Add New', 'geeklove'),
-        'add_new_item'       => __('Add New Gallery', 'geeklove'),
-        'edit_item'          => __('Edit Gallery', 'geeklove'),
-        'new_item'           => __('New Gallery', 'geeklove'),
-        'view_item'          => __('View Gallery', 'geeklove'),
-        'search_items'       => __('Search Gallery', 'geeklove'),
-        'not_found'          =>  __('No galleries found', 'geeklove'),
-        'not_found_in_trash' => __('No galleries found in Trash', 'geeklove'),
+        'name'               => __( 'Gallery', 'geeklove-assistant'),
+        'singular_name'      => __( 'Gallery' , 'geeklove-assistant'),
+        'add_new'            => __('Add New', 'geeklove-assistant'),
+        'add_new_item'       => __('Add New Gallery', 'geeklove-assistant'),
+        'edit_item'          => __('Edit Gallery', 'geeklove-assistant'),
+        'new_item'           => __('New Gallery', 'geeklove-assistant'),
+        'view_item'          => __('View Gallery', 'geeklove-assistant'),
+        'search_items'       => __('Search Gallery', 'geeklove-assistant'),
+        'not_found'          =>  __('No galleries found', 'geeklove-assistant'),
+        'not_found_in_trash' => __('No galleries found in Trash', 'geeklove-assistant'),
         'parent_item_colon'  => ''
     );
 
@@ -43,8 +43,8 @@ function create_post_type_gallery(){
 function gallery_build_taxonomies(){
   register_taxonomy( 'photo-type', 'gallery', array(
     "hierarchical"   => true,
-    "label"          => __( "Categories", 'geeklove' ),
-    "singular_label" => __( "Categories", 'geeklove' ),
+    "label"          => __( "Categories", 'geeklove-assistant' ),
+    "singular_label" => __( "Categories", 'geeklove-assistant' ),
     "rewrite"        => array('slug' => 'photo-type', 'hierarchical' => true)
     )
   );
@@ -54,8 +54,8 @@ function gallery_edit_columns($columns){
 
     $columns = array(
         "cb" => "<input type=\"checkbox\" />",
-        "title" => __( 'Gallery Title', 'geeklove' ),
-        "date" => __('Date Added', 'geeklove')
+        "title" => __( 'Gallery Title', 'geeklove-assistant' ),
+        "date" => __('Date Added', 'geeklove-assistant')
     );
 
     return $columns;

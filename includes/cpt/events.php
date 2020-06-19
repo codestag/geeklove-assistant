@@ -6,16 +6,16 @@
  */
 function stag_create_post_type_events() {
 	$labels = array(
-		'name'               => __( 'Events', 'geeklove' ),
-		'singular_name'      => __( 'Events', 'geeklove' ),
-		'add_new'            => __( 'Add New', 'geeklove' ),
-		'add_new_item'       => __( 'Add New Events', 'geeklove' ),
-		'edit_item'          => __( 'Edit Events', 'geeklove' ),
-		'new_item'           => __( 'New Events', 'geeklove' ),
-		'view_item'          => __( 'View Events', 'geeklove' ),
-		'search_items'       => __( 'Search Events', 'geeklove' ),
-		'not_found'          => __( 'No events found', 'geeklove' ),
-		'not_found_in_trash' => __( 'No events found in Trash', 'geeklove' ),
+		'name'               => __( 'Events', 'geeklove-assistant' ),
+		'singular_name'      => __( 'Events', 'geeklove-assistant' ),
+		'add_new'            => __( 'Add New', 'geeklove-assistant' ),
+		'add_new_item'       => __( 'Add New Events', 'geeklove-assistant' ),
+		'edit_item'          => __( 'Edit Events', 'geeklove-assistant' ),
+		'new_item'           => __( 'New Events', 'geeklove-assistant' ),
+		'view_item'          => __( 'View Events', 'geeklove-assistant' ),
+		'search_items'       => __( 'Search Events', 'geeklove-assistant' ),
+		'not_found'          => __( 'No events found', 'geeklove-assistant' ),
+		'not_found_in_trash' => __( 'No events found in Trash', 'geeklove-assistant' ),
 		'parent_item_colon'  => '',
 	);
 
@@ -48,10 +48,10 @@ add_action( 'init', 'stag_create_post_type_events' );
 function stag_event_edit_columns( $columns ) {
 	$columns = array(
 		'cb'         => "<input type=\"checkbox\" />",
-		'title'      => __( 'Event Title', 'geeklove' ),
-		'event_date' => __( 'Event Date', 'geeklove' ),
-		'time'       => __( 'Event Time', 'geeklove' ),
-		'date'       => __( 'Date Added', 'geeklove' ),
+		'title'      => __( 'Event Title', 'geeklove-assistant' ),
+		'event_date' => __( 'Event Date', 'geeklove-assistant' ),
+		'time'       => __( 'Event Time', 'geeklove-assistant' ),
+		'date'       => __( 'Date Added', 'geeklove-assistant' ),
 	);
 
 	return $columns;
