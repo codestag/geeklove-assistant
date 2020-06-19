@@ -90,8 +90,6 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-tweets.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/homepage-wedding-intro.php';
 			require_once GA_PLUGIN_PATH . 'includes/widgets/static-content.php';
-
-			require_once GA_PLUGIN_PATH . 'includes/updater/updater.php';
 		}
 	}
 endif;
