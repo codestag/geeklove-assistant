@@ -55,7 +55,15 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function init() {
+			add_action( 'init', array( $this, 'load_textdomain' );
 			add_action( 'admin_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
+		}
+
+		/**
+		 * Load plugin textdomain.
+		 */
+		public function load_textdomain() {
+			load_plugin_textdomain( 'geeklove-assistant', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 		}
 
 		/**
@@ -102,7 +110,6 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			require_once GA_PLUGIN_PATH . 'includes/metaboxes/page-metabox.php';
 			require_once GA_PLUGIN_PATH . 'includes/metaboxes/rsvp-metabox.php';
 
-
 			// Shortcodes.
 			require_once GA_PLUGIN_PATH . 'includes/shortcodes/contact-form.php';
 
@@ -141,11 +148,11 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
 				// Scripts
 				wp_enqueue_media();
-				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL  . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
+				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
 				wp_enqueue_script( 'stag-admin-metabox' );
 
 				// Styles
-				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL  . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), GA_VERSION );
+				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), GA_VERSION );
 				wp_enqueue_style( 'stag-admin-metabox' );
 				wp_enqueue_style( 'wp-color-picker' );
 			}
