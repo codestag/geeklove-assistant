@@ -1,12 +1,12 @@
 <?php
 
-add_action('add_meta_boxes', 'stag_metabox_rsvp');
+add_action( 'add_meta_boxes', 'stag_metabox_rsvp' );
 
 $all_events               = stag_all_wedding_events();
 $all_events['all-events'] = __( 'All Events', 'geeklove-assistant' );
 $all_events['no-events']  = __( 'No Events', 'geeklove-assistant' );
 
-function stag_metabox_rsvp(){
+function stag_metabox_rsvp() {
 	global $all_events;
 
 	$meta_box = array(
@@ -32,7 +32,7 @@ function stag_metabox_rsvp(){
 				'options' => $all_events,
 				'std'     => '',
 			),
-		)
+		),
 	);
 
 	$meta_box['page'] = 'rsvp';
