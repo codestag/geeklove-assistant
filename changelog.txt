@@ -1,4 +1,8 @@
 ### Geeklove Assistant Changelog
 
+## 1.0.1 - December 17, 2020
+* Add translation support
+* Other minor changes
+
 ## 1.0.0 - June 19, 2020
 * Initial release
