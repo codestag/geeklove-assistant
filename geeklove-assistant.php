@@ -55,7 +55,7 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 		 * @since 1.0
 		 */
 		public function init() {
-			add_action( 'init', array( $this, 'load_textdomain' );
+			add_action( 'init', array( $this, 'load_textdomain' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'scripts_and_styles' ) );
 		}
 
