@@ -16,7 +16,7 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: geeklove-assistant.php:173
+#: geeklove-assistant.php:180
 msgid "Geeklove Assistant requires Geeklove WordPress Theme to be installed and activated."
 msgstr ""
 
