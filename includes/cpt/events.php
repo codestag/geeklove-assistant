@@ -66,10 +66,14 @@ function stag_event_custom_columns( $column, $post_id ) {
 
 		case 'event_date':
 			$event_date = get_post_meta( $post_id, '_stag_event_date', true );
-			if ( '' === $event_date ) return;
+			if ( '' === $event_date ) {
+				return;
+			}
 
 			$date = date_create( $event_date );
-			echo esc_html( date_format( $date, get_option( 'date_format' ) ) );
+			if ( $date ) {
+				echo esc_html( date_format( $date, get_option( 'date_format' ) ) );
+			}
 			break;
 	}
 }
