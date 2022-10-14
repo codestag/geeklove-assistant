@@ -44,8 +44,13 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			if ( ! isset( self::$instance ) && ! ( self::$instance instanceof Geeklove_Assistant ) ) {
 				self::$instance = new Geeklove_Assistant();
 				self::$instance->define_constants();
-				self::$instance->init();
-				self::$instance->includes();
+				$current_theme = wp_get_theme();
+
+				// To allow live previews while Geeklove is active.
+				if ( ! empty( $current_theme ) && ( 'GeekLove' === $current_theme->name || 'GeekLove' === $current_theme->parent_theme ) ) {
+					self::$instance->init();
+					self::$instance->includes();
+				}
 			}
 		}
 
@@ -146,12 +151,12 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 		 */
 		public function scripts_and_styles( $hook ) {
 			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
-				// Scripts
+				// Scripts.
 				wp_enqueue_media();
 				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
 				wp_enqueue_script( 'stag-admin-metabox' );
 
-				// Styles
+				// Styles.
 				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), GA_VERSION );
 				wp_enqueue_style( 'stag-admin-metabox' );
 				wp_enqueue_style( 'wp-color-picker' );
