@@ -153,11 +153,11 @@ if ( ! class_exists( 'Geeklove_Assistant' ) ) :
 			if ( 'post.php' === $hook || 'post-new.php' === $hook ) {
 				// Scripts.
 				wp_enqueue_media();
-				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ) );
+				wp_register_script( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/js/stag-admin-metabox.js', array( 'jquery', 'wp-color-picker' ), filemtime( GA_PLUGIN_PATH . 'assets/js/stag-admin-metabox.js' ), true );
 				wp_enqueue_script( 'stag-admin-metabox' );
 
 				// Styles.
-				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), GA_VERSION );
+				wp_register_style( 'stag-admin-metabox', GA_PLUGIN_URL . 'assets/css/stag-admin-metabox.css', array( 'wp-color-picker' ), filemtime( GA_PLUGIN_PATH . 'assets/css/stag-admin-metabox.css' ) );
 				wp_enqueue_style( 'stag-admin-metabox' );
 				wp_enqueue_style( 'wp-color-picker' );
 			}
