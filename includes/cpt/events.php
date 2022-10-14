@@ -47,7 +47,7 @@ add_action( 'init', 'stag_create_post_type_events' );
 
 function stag_event_edit_columns( $columns ) {
 	$columns = array(
-		'cb'         => "<input type=\"checkbox\" />",
+		'cb'         => '<input type="checkbox" />',
 		'title'      => __( 'Event Title', 'geeklove-assistant' ),
 		'event_date' => __( 'Event Date', 'geeklove-assistant' ),
 		'time'       => __( 'Event Time', 'geeklove-assistant' ),

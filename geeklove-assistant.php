@@ -172,7 +172,7 @@ endif;
  * @since 1.0
  */
 function geeklove_assistant() {
-	return Geeklove_Assistant::register();
+	Geeklove_Assistant::register();
 }
 
 /**
