@@ -1,5 +1,11 @@
 ### Geeklove Assistant Changelog
 
+## 1.1.0 - January 30, 2023
+* Fix live preview when assistant plugin is active
+* Fix error when $date is set to an invalid string
+* Use filemtime for file versions to avoid browser caching
+* Other minor changes
+
 ## 1.0.1 - December 17, 2020
 * Add translation support
 * Other minor changes
